@@ -2,21 +2,21 @@ sudo: required
 services:
     - docker 
 
-    before_install:
-    - docker build -t kebeabap/react-test -f ./client/Dockerfile.dev ./client
+before_install:
+    - docker build -t kebap/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true kebeabap/react-test npm test
+    - docker run -e CI=true kebap/react-test npm test
 
 after_success:
-    - docker build -t kebeabap/multi-client ./client
-    - docker build -t kebeabap/multi-nginx ./nginx
-    - docker build -t kebeabap/multi-server ./server
-    - docker build -t kebeabap/multi-worker ./worker
+    - docker build -t kebap/multi-client ./client
+    - docker build -t kebap/multi-nginx ./nginx
+    - docker build -t kebap/multi-server ./server
+    - docker build -t kebap/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     # Take those images and push them to docker hub
-    - docker push kebeabap/multi-client
-    - docker push kebeabap/multi-nginx
-    - docker push kebeabap/multi-server
-    - docker push kebeabap/multi-worker
+    - docker push kebap/multi-client
+    - docker push kebap/multi-nginx
+    - docker push kebap/multi-server
+    - docker push kebap/multi-worker
