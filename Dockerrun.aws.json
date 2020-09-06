@@ -1,0 +1,36 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "kebap/multi-client",
+            "hostname": "client",
+            "essential": false
+        }, 
+        {
+            "name": "server",
+            "image": "kebap/multi-server",
+            "hosntame": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "kebap/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "kebap/multi-nginx",
+            "hosntame": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+        }
+    ]
+}
