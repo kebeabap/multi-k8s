@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-deployment 
+  name: postgres-deployment
 spec:
   replicas: 1
   selector:
@@ -29,6 +29,5 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: pgpassword 
-                  key: POSTGRES_PASSWORD  
-
+                  name: pgpassword
+                  key: PGPASSWORD
