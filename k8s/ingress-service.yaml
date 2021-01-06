@@ -15,7 +15,7 @@ spec:
       secretName: multi-k8s-boredboars-de
   rules:
     - host: multi-k8s.boredboars.de
-    - http:
+      http:
         paths:
           - path: /?(.*) 
             backend:
